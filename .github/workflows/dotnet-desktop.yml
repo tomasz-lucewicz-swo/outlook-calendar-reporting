@@ -74,8 +74,8 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
 
-    - name: Restore NuGet packages
-      run: dotnet nuget restore ${{ env.Solution_Name }}
+    #- name: Restore NuGet packages
+     # run: dotnet nuget restore ${{ env.Solution_Name }}
 
     - name: Restore dependencies
       run: dotnet restore ${{ env.Solution_Name }}
