@@ -63,10 +63,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
-        
-    - name: Install Outlook (if needed)
-      run: |
-          choco install microsoft-office
 
     # Install the .NET Core workload
     - name: Install .NET Core
