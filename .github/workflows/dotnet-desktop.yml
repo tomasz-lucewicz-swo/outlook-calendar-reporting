@@ -57,8 +57,7 @@ jobs:
 
     env:
       Solution_Name: outlook-calendar-reporting.sln                       
-      #Test_Project_Path: your-test-project-path                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-
+      
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -75,8 +74,14 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
 
+    - name: Restore NuGet packages
+      run: dotnet nuget restore ${{ env.Solution_Name }}
+
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.Solution_Name }}
+
     - name: Build the solution
-      run: dotnet build outlook-calendar-reporting.sln --configuration Release --no-restore
+      run: dotnet build ${{ env.Solution_Name }} --configuration ${{ matrix.configuration }} --no-restore
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
