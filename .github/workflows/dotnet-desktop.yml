@@ -74,23 +74,16 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
 
-    #- name: Restore NuGet packages
-     # run: dotnet nuget restore ${{ env.Solution_Name }}
 
     - name: Restore dependencies
       run: dotnet restore ${{ env.Solution_Name }}
 
-    - name: Build the solution
-      run: dotnet build ${{ env.Solution_Name }} --configuration ${{ matrix.configuration }} --no-restore
+    - name: Build the solution with MSBuild
+      run: msbuild ${{ env.Solution_Name }} /p:Configuration=${{ matrix.configuration }}
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
       run: dotnet test
 
-    # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
 
 
