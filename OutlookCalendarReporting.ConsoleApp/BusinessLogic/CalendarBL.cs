@@ -22,7 +22,7 @@ namespace OutlookCalendarReporting.ConsoleApp.BusinessLogic
 
                 foreach (var entry in calendarEntries.Where(x => x.Start.Day == day.Day))
                 {
-                    if (entry.ProjectCode.ToLower() == "mgmt" || entry.ProjectCode.ToLower() == "hr" || entry.ProjectCode.ToLower() == "recruit")
+                    if (entry.ProjectCode.ToLower() == "mgmt" || entry.ProjectCode.ToLower() == "hr" || entry.ProjectCode.ToLower() == "recruit" || entry.ProjectCode.ToLower() == "travel")
                     {
                         aggregator.Admin.Add(entry);
                     }
