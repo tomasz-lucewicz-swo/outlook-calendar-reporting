@@ -74,10 +74,19 @@ namespace OutlookCalendarReporting.ConsoleApp.Command
             {
                 if (entry.NotIgnoredDuration > 0)
                 {
-                    // 8,5%
+                    
                     foreach (var calendarEntry in entry.Admin)
                     {
-                        AnsiConsole.WriteLine(entry.Day.ToShortDateString() + ";" + calendarEntry.Subject + ";" + "" + ";" + (calendarEntry.Duration / 60.0).ToString().Replace(",", "."));
+                        if (calendarEntry.ProjectCode.ToLower() == "hr")
+                        {
+                            // 12%
+                            AnsiConsole.WriteLine(entry.Day.ToShortDateString() + ";" + calendarEntry.Subject + ";" + (calendarEntry.Duration / 60.0).ToString().Replace(",", ".") + ";" + "");
+                        }
+                        else
+                        {
+                            // 8,5%
+                            AnsiConsole.WriteLine(entry.Day.ToShortDateString() + ";" + calendarEntry.Subject + ";" + "" + ";" + (calendarEntry.Duration / 60.0).ToString().Replace(",", "."));
+                        }
                     }
                     // 12%
                     foreach (var calendarEntry in entry.Training)
