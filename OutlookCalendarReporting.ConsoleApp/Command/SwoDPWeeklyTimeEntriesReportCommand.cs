@@ -100,6 +100,16 @@ namespace OutlookCalendarReporting.ConsoleApp.Command
                     }
                 }
 
+
+                if (entry.Project.Sum(x => x.Duration) > 0)
+                {
+                    result += $"Project:" + (entry.Project.Sum(x => x.Duration) / 60.0) + " h\n";
+                    foreach (var item in entry.Project)
+                    {
+                        result += $"\t{item.Subject}\n";
+                    }
+                }
+
                 if (entry.Ignored.Sum(x => x.Duration) > 0)
                 {
                     result += $"Ignored:" + (entry.Ignored.Sum(x => x.Duration) / 60.0) + " h\n";

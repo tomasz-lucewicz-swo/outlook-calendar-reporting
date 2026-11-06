@@ -11,6 +11,8 @@ namespace OutlookCalendarReporting.ConsoleApp.Class
     {
         public DateTime Day { get; set; }
 
+        public List<CalendarEntry> Project { get; set; }
+
         public List<CalendarEntry> Admin { get; set; }
 
         public List<CalendarEntry> Training { get; set; }
@@ -19,11 +21,12 @@ namespace OutlookCalendarReporting.ConsoleApp.Class
 
         public List<CalendarEntry> Ignored { get; set; }
 
-        public int NotIgnoredDuration => Admin.Sum(x => x.Duration) + Training.Sum(x => x.Duration) + BDEV.Sum(x => x.Duration);
+        public int NotIgnoredDuration => Admin.Sum(x => x.Duration) + Training.Sum(x => x.Duration) + BDEV.Sum(x => x.Duration) + Project.Sum(x => x.Duration);
 
         public CalendarEntryAggregator(DateTime day)
         {
             Day = day;
+            Project = new List<CalendarEntry>();
             Admin = new List<CalendarEntry>();
             Training = new List<CalendarEntry>();
             BDEV = new List<CalendarEntry>();

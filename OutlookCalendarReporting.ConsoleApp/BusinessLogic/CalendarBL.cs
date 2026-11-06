@@ -30,6 +30,10 @@ namespace OutlookCalendarReporting.ConsoleApp.BusinessLogic
                     {
                         aggregator.Training.Add(entry);
                     }
+                    else if (entry.ProjectCode.ToLower() == "project")
+                    {
+                        aggregator.Project.Add(entry);
+                    }
                     else if (entry.ProjectCode.ToLower() == "bdev")
                     {
                         aggregator.BDEV.Add(entry);

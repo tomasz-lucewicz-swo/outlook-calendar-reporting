@@ -98,6 +98,11 @@ namespace OutlookCalendarReporting.ConsoleApp.Command
                     {
                         AnsiConsole.WriteLine(entry.Day.ToShortDateString() + ";" + calendarEntry.Subject + ";" + (calendarEntry.Duration / 60.0).ToString().Replace(",", ".") + ";" + "");
                     }
+                    // 12%
+                    foreach (var calendarEntry in entry.Project)
+                    {
+                        AnsiConsole.WriteLine(entry.Day.ToShortDateString() + ";" + calendarEntry.Subject + ";" + (calendarEntry.Duration / 60.0).ToString().Replace(",", ".") + ";" + "");
+                    }
                 }
             }
         }
